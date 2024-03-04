@@ -1,11 +1,12 @@
 <%- include("../partials/header") %>
 
+<br>
 <div>
     <% flights.forEach(function(flight) { %>
         <div>
-            <h2><strong>Flight: <%= flight.airline%>-<%=flight.flightNo%></strong></h2> <br>
-            <h4>Airport: <%=flight.airport%></h4> <br>
-            <h4>Departure: <%= flight.departs %></h4>
+            <h2><strong>Flight: <%= flight.airline%>-<%=flight.flightNo%></strong></h2>
+            <h4>&nbsp;&nbsp;&nbsp;&nbsp;Airport: <%=flight.airport%></h4>
+            <h4>&nbsp;&nbsp;&nbsp;&nbsp;Departure: <%= flight.departs %></h4> <br>
 
         </div>
     <% }); %>
