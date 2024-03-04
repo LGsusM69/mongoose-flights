@@ -1,0 +1,16 @@
+<%- include("../partials/header", {title: "New Flight"}) %>
+<div class="flight">
+    <form action="/flights" method="POST">
+        <label for="airline">Airline:</label>
+        <input type="text" name="airline">
+        <label for="airport">Airport:</label>
+        <input type="text" name="airport"> <br>
+        <label for="flightNo">Flight number:</label>
+        <input type="number" name="flightNo">
+        <label for="departs">Departure:</label>
+        <input type="date" name="departs">
+        <input type="submit" value="Create Flight">
+    </form>
+</div>
+
+<%- include("../partials/footer") %>
