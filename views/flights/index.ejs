@@ -3,12 +3,13 @@
 <br>
 <div>
     <% flights.forEach(function(flight) { %>
-        <div>
-            <h2><strong>Flight: <%= flight.airline%>-<%=flight.flightNo%></strong></h2>
+            <div class="flight-card">
+                <h2 id="flight-title"><strong>Flight: <%= flight.airline%>-<%=flight.flightNo%></strong></h2>
+                <a href="/flights/<%= flight._id %>">view details</a>
             <h4>&nbsp;&nbsp;&nbsp;&nbsp;Airport: <%=flight.airport%></h4>
             <h4>&nbsp;&nbsp;&nbsp;&nbsp;Departure: <%= flight.departs %></h4> <br>
-
-        </div>
+    
+            </div>
     <% }); %>
 </div>
 
