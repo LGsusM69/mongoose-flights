@@ -1,1 +1,54 @@
-Details:
+
+
+<%- include('../partials/header', { title: 'Mongoose Flights' }) %>
+
+<div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Flight Details</h2>
+    </div>
+    <div class="card-body">
+      <div class="flight-details">
+        <p><strong>Airline:</strong> <%= flight.airline %></p>
+        <p><strong>Airport:</strong> <%= flight.airport %></p>
+        <p><strong>Flight Number:</strong> <%= flight.flightNo %></p>
+        <p><strong>Departs:</strong> <%= flight.departs.toDateString() %></p>
+        <form id="addDestination" action="/flights/<%= flight._id %>/destinations" method="POST">
+          <label for="airport"><strong>Add Destination:</strong></label>
+          <select name="airport" id="airport">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+          </select>
+          <label for="arrival"><strong>Arrival Date/Time:</strong></label>
+          <input type="datetime-local" name="arrival" id="arrival" required>
+          <button type="submit">Add Destination</button>
+        </form>
+        <% if (flight.destinations.length > 0) { %>
+          <h3>Destinations:</h3>
+          <ul>
+            <% flight.destinations.forEach(function(dest) { %>
+              <li><strong>Airport:</strong> <%= dest.airport %>, <strong>Arrival:</strong> <%= dest.arrival.toDateString() %></li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p>No destinations added yet.</p>
+        <% } %>
+  
+        <h2>Tickets</h2>
+        <ul>
+          <% tickets.forEach(ticket => { %>
+            <li><%= ticket.seat %></li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a href="/flights" class="btn btn-primary" id="btn-flightlist">Back to Flights List</a>
+      <a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-primary" id="btn-ticket">New Ticket</a>
+    </div>
+  </div>
+
+
+<%- include('../partials/footer') %>
